@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Jours écoulés</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+    .compteur {
+      font-size: 2em;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Jours écoulés depuis le 1er janvier 2024</h1>
+  <div class="compteur" id="jours-compteur">Calcul...</div>
+
+  <script>
+    const dateDepart = new Date("2025-05-16T00:00:00");
+
+    function mettreAJour() {
+      const maintenant = new Date();
+      const diffMs = maintenant - dateDepart;
+      const jours = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+      document.getElementById("jours-compteur").textContent =
+        `${jours} jour${jours !== 1 ? "s" : ""} écoulé${jours !== 1 ? "s" : ""}`;
+    }
+
+    mettreAJour();
+    setInterval(mettreAJour, 3600000); // mise à jour toutes les heures
+  </script>
+</body>
+</html>
